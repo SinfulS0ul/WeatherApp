@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - "9"
+
+node_js:
+  - "stable"
+
+env:
+  global:
+    secure: "gpd4tnpvswkBIlPZyZWmfVvHgUKIm61S0vQ3v7PGKnyqMpNPdP5hPiNaVy9Ye9OgmglnSRsGfyNMez8BKKWizGfgJRSFGT1c9FivKwRB1+kuyWw4rjZje65+1JQCLLyD4IlLa/xwlBAXscT3ySLkDyvAZCD1TDdnyVncJi6RLEIOcEzXEmkhFblQPzzoJmzzk4WUclyzj0fU4pzesQn9cpsvSqw2mjPklWM8nJNzha9xogYhPVgfx8qBy1G1MrvzkZFVBjOBCpY4batMflbwBXGMOD/bYz/zvr8PykKCxMHIpJypzsR7Mi2tQ/O+5oC2qzY4vzKUcLbw4xydKtHYis0SuVSy38dgX8nhPJcWXrYjVRBbTIVQXCROy9e74bK8Vfjo3GiD+Vj/Yq8n7CvwVKNVIr2kRToXX9dguskRKy6OSpjmuV6fQ8tZRt18U3ECWYKJRwZWuOIrWhFQWj7ZJYu/AF6bXqyHgCa7mvNIwXEZid9J6mXVrKlnqf2PnzfnHNFrXXAUVsclJteyWUEkrnPxxFMrzrJuFjKWatbuiRZxtjDyJrKsxLgBLfqxYyVu86KZajUDYowmlwvTL65DzLrXJzr/elFgxbSDlHJIt4JDOFXhth02uC3EiyqB0MJtCjk925s5hFQmWxS2mCEyxAoFk62HwqndmVTBPQCiQi8="
+
+before_install:
+  - composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+  
+install:
+  - npm i
+
+cache:
+  directories:
+  - node_modules
+
+script:
+  - npm install
+  - npm test
+  - npm run build
+  
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build
+  on:
+    branch: master
