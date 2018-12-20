@@ -23,8 +23,9 @@ const reducer = ( state = initialState, action ) => {
           lon: action.fetchData.lon,
           lat: action.fetchData.lat,
         }
+        default:
+          return state;
     }
-    return state;
 };
 
 export default reducer;
