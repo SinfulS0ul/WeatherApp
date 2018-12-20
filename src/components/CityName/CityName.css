@@ -1,0 +1,3 @@
+.city:first-letter {
+  text-transform:capitalize;
+}

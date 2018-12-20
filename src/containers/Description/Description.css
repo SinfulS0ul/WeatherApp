@@ -1,0 +1,19 @@
+.description{
+  margin: 60px 15px;
+}
+
+.description a{
+  font-size: 20px;
+}
+
+.description p{
+  font-size: 30px;
+}
+
+.description li{
+  font-size: 25px;
+}
+
+.description ul{
+  list-style: none;
+}
